@@ -19,21 +19,21 @@ namespace DiamondKata.Creators
         {
             AmmendPreviousDiamondLines();
 
-            return LineDictionary.Count switch
-            {
-                0 => $"{ch}",
-                1 => $"{ch} {ch}",
-                2 => $"{ch}   {ch}",
-                _ => CreateLineUsingDictionaryLength(ch)
-            };
+            if (LineDictionary.Count == 0) return ch.ToString();
+
+            return CreateLineUsingDictionaryLength(ch);
         }
 
         internal string CreateLineUsingDictionaryLength(char ch)
         {
-            var returnString = LineDictionary.Last().Value;
+            var characterString = ch.ToString();
+            var returnString = characterString;
 
-            returnString = $"{ch}{GetPreviousStringCentreSpaces(returnString)}";
-            returnString += $"  {ch}";
+            for(int i = 0; i < (LineDictionary.Count * 2) - 1; i++)
+            {
+                returnString += " ";
+            }
+            returnString += characterString;
 
             return returnString;
         }

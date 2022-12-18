@@ -30,16 +30,15 @@ namespace DiamondKata.Tests
             subject.LineDictionary.Count.Should().Be(1);
         }
 
-        [Theory]
-        [InlineData(" B   B ", 'H', "H     H")]
-        [InlineData(" C       C ", 'H', "H         H")]
-        public void CreateLineUsingDictionaryLength_ShouldCreateLineCorrectly(string dictionaryInput, char character, string expected)
+        [Fact]
+        public void CreateLineUsingDictionaryLength_ShouldCreateLineCorrectly()
         {
-            subject.LineDictionary.Add(1, dictionaryInput);
+            subject.LineDictionary.Add(1, "A");
+            subject.LineDictionary.Add(2, "B B");
 
-            var res  = subject.CreateLineUsingDictionaryLength(character);
+            var res  = subject.CreateLineUsingDictionaryLength('H');
 
-            res.Should().Be(expected);
+            res.Should().Be("H   H");
         }
     }
 }
