@@ -13,4 +13,4 @@ The non mathematical approach copies the previous element and creates a substrin
 
 # My Conclusion
 
-I believe that despite the big O of the mathematical approach, I believe it is the most suitable solution. Bearing in mind the use case and the fact we are using characters, a memory exception is so unlikely to occur. The mathematical approach is cleaner, safer, more testable, and therefore that would be my choice. Considering and balancing time and space complexity is not a wasted exercise however!
+I believe that despite the big O of the mathematical approach shows that it is less scalable, I believe it is the most suitable solution. Bearing in mind the use case and the fact we are using characters, a memory exception is so unlikely to occur. The mathematical approach is cleaner, safer, more testable, and therefore that would be my choice. Considering and balancing time and space complexity is not a wasted exercise however!
