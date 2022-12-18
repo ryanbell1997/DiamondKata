@@ -1,30 +1,28 @@
 ﻿using DiamondKata.Interfaces;
-using Moq;
-using System;
+using DiamondKata.Validators;
+using FluentAssertions;
 using Xunit;
 
 namespace DiamondKata.Tests
 {
     public class InputValidatorTests
     {
-        //private readonly IConsoleWriter _subject;
-        //Mock<IShapeCreator> mockShapeCreator = new();
-        //Mock<IInputValidator> mockInputValidator = new();
-        //public InputValidatorTests()
-        //{
-        //    _subject = new ConsoleWriter(mockShapeCreator.Object, mockInputValidator.Object);
-        //}
+        private readonly IInputValidator _subject = new InputValidator();
 
-        //[Fact]
-        //public void Start_ExecutesFully()
-        //{
-        //    var input = "H";
-        //    mockInputValidator.Setup(x => x.IsValid(input)).Returns((true, 'H'));
-        //    mockShapeCreator.Setup(x => x.AddChar('H'));
-        //    mockShapeCreator.SetupGet(x => x.PrintAction).Returns(() => Console.WriteLine("Running"));
+        [Theory]
+        [InlineData("")]
+        [InlineData("ABC")]
+        [InlineData("1")]
+        public void IsValid_ReturnsInvalidAndNullWhenProvidedBadInput(string input)
+        {
+            _subject.IsValid(input).Should().Be((false, null));
+        }
 
+        [Fact]
+        public void IsValid_ReturnsIsValidWhenProvidedGoodInput()
+        {
+            _subject.IsValid("H").Should().Be((true, 'H'));
+        }
 
-        //    mockShapeCreator.Verify(x => x.AddChar('H'), times: Times.Once);
-        //}
     }
 }
