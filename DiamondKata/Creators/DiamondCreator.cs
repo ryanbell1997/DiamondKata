@@ -11,13 +11,11 @@ namespace DiamondKata.Creators
         {
             var newDictionaryLineIndex = LineDictionary.Count + 1;
             LineDictionary.Add(newDictionaryLineIndex, CreateLine(ch));
-
-            Print();
         }
 
         public string CreateLine(char ch)
         {
-            AmmendPreviousDiamondLines();
+            AmendPreviousDiamondLines();
 
             if (LineDictionary.Count == 0) return ch.ToString();
 
@@ -38,20 +36,25 @@ namespace DiamondKata.Creators
             return returnString;
         }
 
-        public void Print()
-        {
-            for (int i = 1; i <= LineDictionary.Count; i++)
+        public Action PrintAction {
+            get
             {
-                Console.WriteLine(LineDictionary[i]);
-            }
+                return () =>
+                {
+                    for (int i = 1; i <= LineDictionary.Count; i++)
+                    {
+                        Console.WriteLine(LineDictionary[i]);
+                    }
 
-            for (int i = LineDictionary.Count - 1; i > 0; i--)
-            {
-                Console.WriteLine(LineDictionary[i]);
+                    for (int i = LineDictionary.Count - 1; i > 0; i--)
+                    {
+                        Console.WriteLine(LineDictionary[i]);
+                    }
+                };
             }
         }
 
-        internal void AmmendPreviousDiamondLines()
+        internal void AmendPreviousDiamondLines()
         {
             foreach (var line in LineDictionary)
             {
