@@ -1,5 +1,14 @@
 ﻿using DiamondKata;
+using DiamondKata.Creators;
+using DiamondKata.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
-var consoleWriter = new ConsoleWriter();
+var services = new ServiceCollection();
 
-consoleWriter.ReadCharacter();
+services
+    .AddSingleton<IShapeCreator, DiamondCreator>()
+    .AddSingleton<IConsoleWriter, ConsoleWriter>();
+
+var serviceProvider = services.BuildServiceProvider();
+
+serviceProvider.GetRequiredService<IConsoleWriter>()!.Start();
