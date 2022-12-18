@@ -13,6 +13,7 @@ namespace DiamondKata.Tests
         [InlineData("")]
         [InlineData("ABC")]
         [InlineData("1")]
+        [InlineData(null)]
         public void IsValid_ReturnsInvalidAndNullWhenProvidedBadInput(string input)
         {
             _subject.IsValid(input).Should().Be((false, null));
