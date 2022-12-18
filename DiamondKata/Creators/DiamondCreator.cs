@@ -61,8 +61,5 @@ namespace DiamondKata.Creators
                 LineDictionary[line.Key] = $" {line.Value} ";
             }
         }
-
-        public string GetPreviousStringCentreSpaces(string returnString)
-            => returnString.Substring(2, returnString.Length - 4);
     }
 }

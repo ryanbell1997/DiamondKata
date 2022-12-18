@@ -8,17 +8,6 @@ namespace DiamondKata.Tests
     {
         private readonly DiamondCreator _subject = new();
 
-        [Theory]
-        [InlineData("_BAAAB_", "AAA")]
-        [InlineData(" C   C ", "   ")]
-        [InlineData(" L     A         A         L ", "     A         A         ")]
-        public void GetPreviousStringCentreSpaces_CorrectlyReturnsCentralSpace(string input, string expected)
-        {
-            var res = _subject.GetPreviousStringCentreSpaces(input);
-
-            res.Should().Be(expected);
-        }
-
         [Fact]
         public void AmmendPreviousDiamondLines_ShouldCorrectlyPrefixAndSuffixWithSpaces()
         {
