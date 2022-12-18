@@ -7,6 +7,10 @@ Time and memory complexity have been considered. For example, in the instance of
 
 # 2 Branches - 2 Approaches
 
-There are two branches with two different implementations. NumericalApproach follows a mathematical approach to calculate the number of spaces between the characters, however I initially thought that this is a less efficient method, because this approach is O(n) on the number of spaces.
+There are two branches with two different implementations. The mathematical approach calculates the number of spaces between the characters, however I initially thought that this is a less efficient method, because this approach is O(n) on the number of spaces.
 
-The master approach copies the previous element and creates a substring of the spaces, and then adds the extra spaces for the next line. On research, I am under the impression that .SubString() is O(1), which means this section of the code scales better. What I will admit is this approach is not quite as clean and feels like it is more error prone.
+The non mathematical approach copies the previous element and creates a substring of the spaces, and then adds the extra spaces for the next line. On research, I am under the impression that .SubString() is O(1), which means this section of the code scales better. What I will admit is this approach is not quite as clean and feels like it is more error prone. The flip side is that the alternative mathematical approach is easier to cover with more test cases.
+
+# My Conclusion
+
+I believe that despite the big O of the mathematical approach, I believe it is the most suitable solution. Bearing in mind the use case and the fact we are using characters, a memory exception is so unlikely to occur. The mathematical approach is cleaner, safer, more testable, and therefore that would be my choice. Considering and balancing time and space complexity is not a wasted exercise however!
