@@ -5,11 +5,11 @@ My implementation for this kata goes beyond just creating a diamond. I tried to 
 
 Time and memory complexity have been considered. For example, in the instance of a diamond, I chose to use a dictionary so that the space requirement is around half what it would be if you stored every line, as we are only iterating up and down the dictionary to get the shape we want. There’s no need to store duplicate data. 
 
-# 2 Branches - 2 Approaches
+# 2 Approaches
 
-There are two branches with two different implementations. The mathematical approach calculates the number of spaces between the characters, however I initially thought that this is a less efficient method, because this approach is O(n) on the number of spaces.
+In deciding what the best approach was, I determined there was two ways to tackle this, a mathematical approach, and a non-mathematical approach. The mathematical approach calculates the number of spaces between the characters, then loops through by appending those spaces to the new string, however I initially thought that this is a less efficient method, because this approach is O(n) on the number of spaces.
 
-The non mathematical approach copies the previous element and creates a substring of the spaces, and then adds the extra spaces for the next line. On research, I am under the impression that .SubString() is O(1), which means this section of the code scales better. What I will admit is this approach is not quite as clean and feels like it is more error prone. The flip side is that the alternative mathematical approach is easier to cover with more test cases.
+The non mathematical approach copies the previous element and creates a substring of the spaces, and then adds the extra new spaces for the next line. From research, I am under the impression that .SubString() is O(1), which means this section of the code scales better. What I will admit is this approach is not quite as clean and feels like it is more error prone. The flip side is that the alternative mathematical approach is easier to cover with more test cases.
 
 # My Conclusion
 
