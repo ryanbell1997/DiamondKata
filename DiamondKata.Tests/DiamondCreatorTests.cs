@@ -6,7 +6,7 @@ namespace DiamondKata.Tests
 {
     public class DiamondCreatorTests
     {
-        DiamondCreator subject = new();
+        private readonly DiamondCreator _subject = new();
 
         [Theory]
         [InlineData("_BAAAB_", "AAA")]
@@ -14,7 +14,7 @@ namespace DiamondKata.Tests
         [InlineData(" L     A         A         L ", "     A         A         ")]
         public void GetPreviousStringCentreSpaces_CorrectlyReturnsCentralSpace(string input, string expected)
         {
-            var res = subject.GetPreviousStringCentreSpaces(input);
+            var res = _subject.GetPreviousStringCentreSpaces(input);
 
             res.Should().Be(expected);
         }
@@ -22,12 +22,12 @@ namespace DiamondKata.Tests
         [Fact]
         public void AmmendPreviousDiamondLines_ShouldCorrectlyPrefixAndSuffixWithSpaces()
         {
-            subject.LineDictionary.Add(1, "B");
+            _subject.LineDictionary.Add(1, "B");
 
-            subject.AmmendPreviousDiamondLines();
+            _subject.AmendPreviousDiamondLines();
 
-            subject.LineDictionary[1].Should().Be(" B ");
-            subject.LineDictionary.Count.Should().Be(1);
+            _subject.LineDictionary[1].Should().Be(" B ");
+            _subject.LineDictionary.Count.Should().Be(1);
         }
 
         [Theory]
@@ -35,9 +35,10 @@ namespace DiamondKata.Tests
         [InlineData(" C       C ", 'H', "H         H")]
         public void CreateLineUsingDictionaryLength_ShouldCreateLineCorrectly(string dictionaryInput, char character, string expected)
         {
-            subject.LineDictionary.Add(1, dictionaryInput);
+            _subject.LineDictionary.Add(1, "A");
+            _subject.LineDictionary.Add(2, "B B");
 
-            var res  = subject.CreateLineUsingDictionaryLength(character);
+            var res  = _subject.CreateLineUsingDictionaryLength('H');
 
             res.Should().Be(expected);
         }
