@@ -3,15 +3,16 @@ using DiamondKata.Interfaces;
 
 namespace DiamondKata
 {
-    public class ConsoleWriter
+    public class ConsoleWriter : IConsoleWriter
     {
-        IShapeCreator ShapeCreator { get; set; }
-        public ConsoleWriter()
+        private readonly IShapeCreator _shapeCreator;
+
+        public ConsoleWriter(IShapeCreator shapeCreator)
         {
-            ShapeCreator = new DiamondCreator();
+            _shapeCreator = shapeCreator;
         }
 
-        public void ReadCharacter()
+        public void Start()
         {
             Console.WriteLine("Please type a letter from the alphabet, and press the enter key to add to the shape. Type \"Restart\" to restart the shape, or type \"Exit\" to quit");
 
@@ -25,7 +26,7 @@ namespace DiamondKata
                 {
                     if (!Char.IsNumber(character))
                     {
-                        PrintShape(ShapeCreator, character);
+                        PrintShape(character);
                     }
                     else
                     {
@@ -45,14 +46,14 @@ namespace DiamondKata
         {
             if (!string.IsNullOrEmpty(input) && input.Equals("Restart", StringComparison.CurrentCultureIgnoreCase))
             {
-                ShapeCreator.LineDictionary.Clear();
-                ReadCharacter();
+                _shapeCreator.LineDictionary.Clear();
+                Start();
             }
         }
 
-        public void PrintShape(IShapeCreator creator, char character)
+        public void PrintShape(char character)
         {
-            creator.AddChar(character);
+            _shapeCreator.AddChar(character);
         }
     }
 }
